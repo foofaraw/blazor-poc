@@ -30,6 +30,8 @@ function enableEditingText(id) {
 
 function disableEditingElement(id) {
     const target = document.getElementById(id);
-    target.readOnly = true;
-    target.blur();
+    if (target) {
+        target.readOnly = true;
+        target.blur();
+    }
 }

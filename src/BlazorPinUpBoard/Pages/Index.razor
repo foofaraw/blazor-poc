@@ -6,11 +6,11 @@
         {
             <div class="card">
                 <div class="card-title">
-                    <input type="text" id="@item.TitleElementId" value="@item.Title" @onclick="() => EnableTitleEdit(item)" placeholder="type title" readonly />
+                    <input type="text" id="@item.TitleElementId" @bind="item.Title" @onclick="() => EnableTitleEdit(item)" placeholder="type title" readonly />
                     <button class="btn-remove" @onclick="() => RemoveCard(item)">X</button>
                 </div>
                 <div class="card-body">
-                    <textarea class="card-text" id="@item.TextElementId" @onclick="() => EnableTextEdit(item)" placeholder="type here" readonly>@item.Text</textarea>
+                    <textarea class="card-text" id="@item.TextElementId" @onclick="() => EnableTextEdit(item)" placeholder="type here" @bind="item.Text" readonly></textarea>
                 </div>
             </div>
         }

@@ -23,6 +23,9 @@ namespace BlazorPinUpBoard
         {
             TitleElementId = $"card-title-{_count}";
             TextElementId = $"card-text-{_count}";
+
+            Title = DateTime.Now.ToString();
+            Text = DateTime.Now.ToString();
             _count++;
         }        
     }
