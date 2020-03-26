@@ -6,6 +6,8 @@ app {
     position: relative;
     display: flex;
     flex-direction: column;
+    color: #ffffff;
+    font-family: monospace;
 }
 
 #blazor-error-ui {
