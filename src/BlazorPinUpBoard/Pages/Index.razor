@@ -1,0 +1,60 @@
+﻿@page "/"
+@inject IJSRuntime JSRuntime;
+
+    <div class="container">
+        @foreach (var item in _cards)
+        {
+            <div class="card">
+                <div class="card-title">
+                    <input type="text" id="@item.TitleElementId" value="@item.Title" @onclick="() => EnableTitleEdit(item)" placeholder="type title" readonly />
+                    <button class="btn-remove" @onclick="() => RemoveCard(item)">X</button>
+                </div>
+                <div class="card-body">
+                    <textarea class="card-text" id="@item.TextElementId" @onclick="() => EnableTextEdit(item)" placeholder="type here" readonly>@item.Text</textarea>
+                </div>
+            </div>
+        }
+
+        <div class="card empty">
+            <div class="card-title empty">
+            </div>
+            <div class="card-body empty empty-body">
+                <button class="btn-add" @onclick="AddNewCard">+</button>
+            </div>
+        </div>
+    </div>
+
+
+@code {
+    private List<Card> _cards = new List<Card>();
+
+    protected override void OnAfterRender(bool firstRender)
+    {
+        Card card = _cards?.LastOrDefault();
+        if (!firstRender && card != null && !card.IsInitialized)
+        {
+            EnableTitleEdit(card);
+            card.IsInitialized = true;
+        }
+    }
+
+    private void AddNewCard()
+    {
+        _cards.Add(new Card());
+    }
+
+    private void RemoveCard(Card card)
+    {
+        _cards.Remove(card);
+    }
+
+    private void EnableTitleEdit(Card card)
+    {
+        JSRuntime.InvokeVoidAsync("enableEditingTitle", card.TitleElementId, card.TextElementId);
+    }
+
+    private void EnableTextEdit(Card card)
+    {
+        JSRuntime.InvokeVoidAsync("enableEditingText", card.TextElementId);
+    }
+}
