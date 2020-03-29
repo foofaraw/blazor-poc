@@ -8,7 +8,7 @@
 5. Go to http://localhost:5000
 
 ## Todo
-- [ ] save and read from browser local storage
-- [ ] navigate with keyboard
-- [ ] add rich text support
+- [ ] storage
+- [ ] keyboard navigation
+- [ ] rich text support
 - [ ] PWA
