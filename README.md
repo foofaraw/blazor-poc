@@ -6,9 +6,3 @@
 3. ``` cd blazor-poc/src/BlazorPinUpBoard```
 4. ``` dotnet run ```
 5. Go to http://localhost:5000
-
-## Todo
-- [ ] storage
-- [ ] keyboard navigation
-- [ ] rich text support
-- [ ] PWA
